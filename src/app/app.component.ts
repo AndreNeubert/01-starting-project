@@ -5,6 +5,12 @@ import { HeaderComponent } from './header/header.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { UserComponent } from './user/user.component';
 
+interface User {
+  id: string;
+  name: string;
+  avatar: string;
+}
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -14,10 +20,9 @@ import { UserComponent } from './user/user.component';
 })
 export class AppComponent {
   public users = DUMMY_USERS;
-  selectedUserName?: string;
+  selectedUser?: User;
 
   onSelectUser(id: string) {
-    const selectedUser = this.users.find((user) => user.id === id);
-    this.selectedUserName = selectedUser ? selectedUser.name : '';
+    this.selectedUser = this.users.find((user) => user.id === id);
   }
 }
